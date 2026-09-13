@@ -8,11 +8,14 @@ import java.util.List;
 
 @Service
 public class StudentService {
+
     private StudentRepository studentRepository;
+
 
     public StudentService(StudentRepository studentRepository){
         this.studentRepository=studentRepository;
     }
+
     //get all the students
     public List<Student> getAllStudents() {
         return studentRepository.findAll();
@@ -28,9 +31,8 @@ public class StudentService {
     }
 
 
-
-
     //add one student
+
     public Student addStudent(Student student){
         return studentRepository.save(student);
     }
@@ -43,7 +45,6 @@ public class StudentService {
 
     public Student updateStudent(Long id, Student student){
         Student existingStudent= studentRepository.findById(id).orElse(null);
-
         if(existingStudent==null){
             return null;
         }
@@ -53,6 +54,7 @@ public class StudentService {
         existingStudent.setDueDate(student.getDueDate());
         existingStudent.setJoiningDate(student.getJoiningDate());
         existingStudent.setActive(student.isActive());
+
 
         return studentRepository.save(existingStudent);
 
@@ -70,4 +72,9 @@ public class StudentService {
 
 
 
-}
+
+
+
+
+
+                                                         }
